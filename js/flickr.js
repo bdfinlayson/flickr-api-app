@@ -5,12 +5,16 @@ $(document).ready(function() {
 
     var flickrOptions;
 
+    var $submitButton = $('#submitInput');
+
 //on form button click
   $('#submitInput').on('click', function(evt) {
     evt.preventDefault();
     console.log('click registered');
     //var $searchButton = $('#submitInput');
     var userInput = $('input:first').val();
+//disable userinput during load
+    $submitButton.attr('disabled', true).val('searching...');
 
     flickrOptions = {
      tags: userInput,
@@ -46,6 +50,7 @@ function displayPhotos(data) {
   });
   photoHTML += '</ul>';
   $('#photos').html(photoHTML);
+  $submitButton.attr('disabled', false).val('Search');
 }
 
 
