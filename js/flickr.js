@@ -1,10 +1,7 @@
 $(document).ready(function() {
     var flickrAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
-
     var animal;
-
     var flickrOptions;
-
     var $submitButton = $('#submitInput');
 
 //on form button click
@@ -15,7 +12,7 @@ $(document).ready(function() {
     var userInput = $('input:first').val();
 //disable userinput during load
     $submitButton.attr('disabled', true).val('searching...');
-
+//assemble api object properties and values
     flickrOptions = {
      tags: userInput,
      format: 'json'
@@ -50,6 +47,7 @@ function displayPhotos(data) {
   });
   photoHTML += '</ul>';
   $('#photos').html(photoHTML);
+//reenable form submit button
   $submitButton.attr('disabled', false).val('Search');
 }
 
